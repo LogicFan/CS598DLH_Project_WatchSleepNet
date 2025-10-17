@@ -6,13 +6,13 @@ This project is a replication of the paper **WatchSleepNet: A Novel Model and Pr
 
 The goal of this replication is to implement and validate the WatchSleepNet model, potentially extending it with additional experiments or optimizations.
 
-<!--
+
 ## Installation
 TODO
 ### Prerequisites
 
-- Python 3.12+
-- PyTorch 2.9+
+- Python 3.10
+- PyTorch 2.9
 - Other dependencies (see `requirements.txt`)
 
 ### Setup
@@ -23,11 +23,16 @@ TODO
    cd CS598DLH_Project_WatchSleepNet
    ```
 
-2. Install dependencies:
+2. Create Conda environment:
+   ```bash
+   conda create -n <env_name> python=3.10
+   conda activate <env_name>
+   ```
+
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
--->
 
 <!--
 ## Usage
