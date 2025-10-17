@@ -6,9 +6,18 @@ This project is a replication of the paper **WatchSleepNet: A Novel Model and Pr
 
 The goal of this replication is to implement and validate the WatchSleepNet model, potentially extending it with additional experiments or optimizations.
 
+## Structure
+
+```
+.
+├── prepare_data
+│   ├── dreamt.py # Run program to program to extract IBI from downloaded DREAMT dataset.
+├── README.md
+└── requirements.txt
+```
 
 ## Installation
-TODO
+
 ### Prerequisites
 
 - Python 3.10
@@ -34,16 +43,27 @@ TODO
    pip install -r requirements.txt
    ```
 
-<!--
 ## Usage
-
-TODO:
-
 
 ### Data Preparation
 
-Download the required sleep staging datasets (e.g., from [source]). Place the data in the `data/` directory.
+Download the following dataset
+- [Dataset for Real-time sleep stage EstimAtion using Multisensor wearable Technology](https://physionet.org/content/dreamt/2.0.0/)
+- [Multi-Ethnic Study of Atherosclerosis](https://sleepdata.org/datasets/mesa)
+- [Sleep Heart Health Study](https://sleepdata.org/datasets/shhs)
 
+and put them in the following structure
+
+```
+.
+└── data
+    └── raw
+        ├── DREAMT  # Raw data for the DREAMT dataset
+        ├── MESA    # Raw data for the MESA dataset
+        └── SHHS    # Raw data for the SHHS dataset
+```
+
+<!--
 ### Training
 
 To train the model:
