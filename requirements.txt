@@ -7,3 +7,4 @@ optuna==4.1.0
 pandas==2.2.3
 psutil==6.1.1
 biosppy==2.2.2
+mne==1.9.0
