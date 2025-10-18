@@ -52,15 +52,25 @@ Download the following dataset
 - [Multi-Ethnic Study of Atherosclerosis](https://sleepdata.org/datasets/mesa)
 - [Sleep Heart Health Study](https://sleepdata.org/datasets/shhs)
 
-and put them in the following structure
+and put the corresponding dataset in the `raw` folder.
 
 ```
 .
 └── data
-    └── raw
-        ├── DREAMT  # Raw data for the DREAMT dataset
-        ├── MESA    # Raw data for the MESA dataset
-        └── SHHS    # Raw data for the SHHS dataset
+    ├── raw
+    │   ├── DREAMT  # Raw data for the DREAMT dataset
+    │   ├── MESA    # Raw data for the MESA dataset
+    │   └── SHHS    # Raw data for the SHHS dataset
+    └── processed
+        ├── DREAMT_PIBI_SE  # Processed data for the DREAMT dataset
+        ├── MESA_PPG        # Processed data for the MESA dataset
+```
+
+and run the following commands
+
+```bash
+python prepare_data/DREAMT_PIBI_SE
+python prepare_data/MESA_PPG.py
 ```
 
 <!--
