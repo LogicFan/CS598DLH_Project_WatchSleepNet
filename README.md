@@ -10,10 +10,13 @@ The goal of this replication is to implement and validate the WatchSleepNet mode
 
 ```
 .
-├── prepare_data
-│   ├── dreamt.py # Run program to program to extract IBI from downloaded DREAMT dataset.
 ├── README.md
-└── requirements.txt
+├── requirements.txt
+├── data/                  # See Data Preparation below
+├── prepare_data/
+│   ├── DREAMT_PIBI_SE.py  # Script to extract IBI from downloaded DREAMT dataset
+│   ├── MESA_PPG.py        # Script to process MESA data
+│   └── utils.py           # Utility functions
 ```
 
 ## Installation
@@ -47,12 +50,12 @@ The goal of this replication is to implement and validate the WatchSleepNet mode
 
 ### Data Preparation
 
-Download the following dataset
+1. Download the following dataset
 - [Dataset for Real-time sleep stage EstimAtion using Multisensor wearable Technology](https://physionet.org/content/dreamt/2.0.0/)
 - [Multi-Ethnic Study of Atherosclerosis](https://sleepdata.org/datasets/mesa)
 - [Sleep Heart Health Study](https://sleepdata.org/datasets/shhs)
 
-and put the corresponding dataset in the `raw` folder.
+2. Put the corresponding dataset in the `raw` folder.
 
 ```
 .
@@ -66,10 +69,10 @@ and put the corresponding dataset in the `raw` folder.
         ├── MESA_PPG        # Processed data for the MESA dataset
 ```
 
-and run the following commands
+3. Run the following commands
 
 ```bash
-python prepare_data/DREAMT_PIBI_SE
+python prepare_data/DREAMT_PIBI_SE.py
 python prepare_data/MESA_PPG.py
 ```
 
