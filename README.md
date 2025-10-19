@@ -67,6 +67,7 @@ The goal of this replication is to implement and validate the WatchSleepNet mode
     └── processed
         ├── DREAMT_PIBI_SE  # Processed data for the DREAMT dataset
         ├── MESA_PPG        # Processed data for the MESA dataset
+        ├── SHHS_EEG        # Processed data for the SHHS dataset
 ```
 
 3. Run the following commands
@@ -74,6 +75,7 @@ The goal of this replication is to implement and validate the WatchSleepNet mode
 ```bash
 python prepare_data/DREAMT_PIBI_SE.py
 python prepare_data/MESA_PPG.py
+python prepare_data/SHHS_EEG.py
 ```
 
 <!--
