@@ -16,6 +16,8 @@ The goal of this replication is to implement and validate the WatchSleepNet mode
 ├── prepare_data/
 │   ├── DREAMT_PIBI_SE.py  # Script to extract IBI from downloaded DREAMT dataset
 │   ├── MESA_PPG.py        # Script to process MESA data
+│   ├── SHHS_ECG.py        # Script to process SHHS ECG data
+│   ├── SHHS_MESA_IBI.py   # Script to process combined SHHS and MESA IBI data
 │   └── utils.py           # Utility functions
 ```
 
@@ -68,6 +70,7 @@ The goal of this replication is to implement and validate the WatchSleepNet mode
         ├── DREAMT_PIBI_SE  # Processed data for the DREAMT dataset
         ├── MESA_PPG        # Processed data for the MESA dataset
         ├── SHHS_EEG        # Processed data for the SHHS dataset
+        └── SHHS_MESA_IBI   # Combined IBI data from SHHS and MESA
 ```
 
 3. Run the following commands
@@ -76,6 +79,7 @@ The goal of this replication is to implement and validate the WatchSleepNet mode
 python prepare_data/DREAMT_PIBI_SE.py
 python prepare_data/MESA_PPG.py
 python prepare_data/SHHS_EEG.py
+python prepare_data/SHHS_MESA_IBI.py
 ```
 
 <!--
