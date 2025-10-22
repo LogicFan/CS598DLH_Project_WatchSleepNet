@@ -244,7 +244,7 @@ if __name__ == "__main__":
         in_dir=INPUT_MESA_PATH,
         out_dir=OUTPUT_PATH,
         info_path=INPUT_MESA_INFO,
-        id_col="mesaid",
+        id_col="nsrrid",
         ahi_col="nsrr_ahi_hp3u",
         fs_col="fs",
         method="neurokit", # PPG from MESA
