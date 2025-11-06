@@ -111,11 +111,7 @@ Remove corrupted files using:
 python modeling/check_corrupted_files.py --fix
 ```
 
-2. To train the model:
-```bash
-python modeling/train.py --config config.yaml
-```
-
+2. Use transfer learning or train model from scratch (see below headers)
 
 #### Transfer Learning
 
