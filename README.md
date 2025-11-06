@@ -112,17 +112,11 @@ Remove corrupted files using:
 python check_corrupted_files.py --fix
 ```
 
-2. To train the model:
-```bash
-python train.py --config config.yaml
-```
-
-
 #### Transfer Learning
 
 You can perform transfer learning experiments (pre-train on IBI from SHHS+MESA and test on DREAMT IBI) using the `modeling/train_transfer.py`. Run the experiment with WatchSleepNet:
 ```
-python train_transfer.py
+python train_transfer.py --model=watchsleepnet
 ```
 To perform the experiment with other benchmark models (i.e. InsightSleepNet, SleepConvNet), indicate selected model using the `--model` parser argument:
 ```
