@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    base_dir = Path("/Users/leeaaron/Desktop/UIUC/WatchSleepNet/DATA")
+    base_dir = Path(__file__).resolve().parent.parent / "data" / "processed"
 
     datasets = {
         "shhs_mesa_ibi": base_dir / "SHHS_MESA_IBI",
