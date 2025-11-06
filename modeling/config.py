@@ -5,7 +5,7 @@ import sys
 import torch.nn as nn
 
 ### Enter path to your dataset (formatted per README)
-DATASET_DIR = Path("/Users/leeaaron/Desktop/UIUC/WatchSleepNet/DATA")
+DATASET_DIR = Path(__file__).resolve().parent.parent / "data" / "processed"
 
 # Define the dynamic file save path generator
 def generate_model_save_path(model_name, dataset_name, version=None, suffix=None):

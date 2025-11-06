@@ -101,16 +101,21 @@ python prepare_data/SHHS_MESA_IBI.py
 
 ### Training
 
-* **Note**: change the `data_path` in `config.py` to the path of the dataset directory.
 1. To check all datasets for corrupted files:
 ```bash
-python check_corrupted_files.py --dataset all
+python modeling/check_corrupted_files.py --dataset all
 ```
 
 Remove corrupted files using:
 ```bash
-python check_corrupted_files.py --fix
+python modeling/check_corrupted_files.py --fix
 ```
+
+2. To train the model:
+```bash
+python modeling/train.py --config config.yaml
+```
+
 
 #### Transfer Learning
 
