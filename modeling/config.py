@@ -274,6 +274,7 @@ class SleepConvNetConfig:
     CONV_LAYERS_CONFIGS = [(1, 32, 3, 1), (32, 64, 3, 1), (64, 128, 3, 1)]
     DILATION_LAYERS_CONFIGS = None
     USE_RESIDUAL = True
+    USE_DS_TCN = False # True for DS-TCN Ablation of SleepConvNet
 
     @classmethod
     def to_dict(cls):
@@ -290,6 +291,7 @@ class SleepConvNetConfig:
             "conv_layers_configs": cls.CONV_LAYERS_CONFIGS,
             "dilation_layers_configs": cls.DILATION_LAYERS_CONFIGS,
             "use_residual": cls.USE_RESIDUAL,
+            "use_ds_tcn":cls.USE_DS_TCN, # DS-TCN Ablation of SleepConvNet
             # --- Training hyperparams ---
             "BATCH_SIZE": cls.BATCH_SIZE,
             "LEARNING_RATE": cls.LEARNING_RATE,

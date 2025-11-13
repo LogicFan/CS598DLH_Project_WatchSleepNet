@@ -209,6 +209,21 @@ python evaluate_model.py \
 - **Moderate**: 15 ≤ AHI < 30 (moderate sleep apnea)
 - **Severe**: AHI ≥ 30 (severe sleep apnea)
 
+
+#### **Ablation**
+
+This ablation replaces TCN in SleepConvNet with Depthwise Separable Convolutions (DS-TCN) which reduces params & FLOPs.
+
+Hypothesis: DS-TCN retains temporal receptive field with fewer parameters, improving generalization on small DREAMT and inference speed on smartwatches.
+
+Command to modify the dilation block of SleepConvNet into DS-TCN:
+
+```bash
+python train_transfer.py \
+    --model sleepconvnet \
+    --ablation True \
+```
+
 <!--
 To evaluate the trained model:
 ```bash

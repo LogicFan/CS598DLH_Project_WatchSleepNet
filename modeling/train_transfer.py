@@ -63,6 +63,8 @@ if __name__ == '__main__':
         model_config_class = InsightSleepNetConfig
     elif args.model == "sleepconvnet":
         model_config_class = SleepConvNetConfig
+        if args.ablation == "True":
+            model_config_class.USE_DS_TCN = True
     elif args.model == "sleepppgnet":
         model_config_class = SleepPPGNetConfig
     else:
