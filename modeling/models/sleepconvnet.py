@@ -18,8 +18,12 @@ class SleepConvNet(nn.Module):
         conv_layers_configs=None,
         dilation_layers_configs=None,
         use_residual=True,
+        use_ds_tcn=False,  # Ablation:  Depthwise Separable TCN (DS-TCN)
     ):
         super(SleepConvNet, self).__init__()
+
+        # Ablation: DS-TCN
+        self.use_ds_tcn = use_ds_tcn
 
         # Provide default configs if none are provided
         if conv_layers_configs is None:
@@ -68,15 +72,26 @@ class SleepConvNet(nn.Module):
             final_in_channels, final_in_channels, kernel_size=32, stride=1
         )
 
-        # Build dilation block
+        # Build dilation block including DS-TCN ablation
         dilation_layers = []
         for in_ch, out_ch, k, d in dilation_layers_configs:
-            padding = (k - 1) * d // 2
-            dilation_layers.append(
-                nn.Conv1d(in_ch, out_ch, kernel_size=k, dilation=d, padding=padding)
-            )
-            dilation_layers.append(nn.LeakyReLU())
-            dilation_layers.append(nn.Dropout(dropout_rate))
+            padding = (k - 1) * d  # 'same' padding
+
+            if self.use_ds_tcn:
+                # Depthwise + Pointwise
+                dilation_layers.append(
+                    nn.Conv1d(in_ch, in_ch, kernel_size=k, dilation=d, padding=padding, groups=in_ch)
+                )  # depthwise
+                dilation_layers.append(
+                    nn.Conv1d(in_ch, out_ch, kernel_size=1)
+                )  # pointwise
+            else:
+                # Original full conv
+                dilation_layers.append(
+                    nn.Conv1d(in_ch, out_ch, kernel_size=k, dilation=d, padding=padding)
+                )
+
+
         self.dilation_block = nn.Sequential(*dilation_layers)
 
         # Output layer

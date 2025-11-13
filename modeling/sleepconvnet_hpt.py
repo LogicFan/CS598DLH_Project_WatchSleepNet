@@ -102,6 +102,7 @@ def initialize_model(model_params: dict, device: torch.device) -> SleepConvNet:
         dropout_rate=model_params['dropout_rate'],
         conv_layers_configs=model_params['conv_layers_configs'],
         dilation_layers_configs=model_params['dilation_layers_configs'],
+        use_ds_tcn=model_params.get('use_ds_tcn', False),           # The proposed DS-TCN ablation
     ).to(device)
     logger.info("Initialized SleepConvNet model.")
     return model
