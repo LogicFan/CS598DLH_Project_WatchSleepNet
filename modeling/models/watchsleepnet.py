@@ -90,8 +90,9 @@ class DeepFeatureExtractor(nn.Module):
 
 
 class DeepTCNBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size, num_layers=3):
+    def __init__(self, in_channels, out_channels, kernel_size, num_layers=3, use_ds_tcn=False):
         super(DeepTCNBlock, self).__init__()
+        self.use_ds_tcn = use_ds_tcn  # DS-TCN Ablation
         self.layers = nn.ModuleList()
         current_channels = in_channels
         dilation = 1
@@ -265,7 +266,7 @@ class WatchSleepNet(nn.Module):
         feature_dim = 256  # Assuming the feature extractor outputs 256 features
 
         if self.use_tcn:
-            self.tcn = DeepTCNBlock(feature_dim, num_channels, kernel_size, tcn_layers)
+            self.tcn = DeepTCNBlock(feature_dim, num_channels, kernel_size, tcn_layers, use_ds_tcn=self.use_ds_tcn)
             lstm_input_dim = num_channels
         else:
             lstm_input_dim = feature_dim
