@@ -50,6 +50,11 @@ if __name__ == '__main__':
         action="store_true",
         help="If set, load an existing pretrained model and skip re-training."
     )
+    parser.add_argument(
+    "--ablation",
+    action="store_true",
+    help="Enable ablation mode: sets USE_DS_TCN=True for SleepConvNet"
+    )
     args = parser.parse_args()
 
     train_config = dataset_configurations.get(TRAIN_DATASET, None)
