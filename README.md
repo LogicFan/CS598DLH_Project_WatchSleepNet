@@ -219,6 +219,7 @@ Hypothesis: DS-TCN retains temporal receptive field with fewer parameters, impro
 Command to modify the dilation block of SleepConvNet into DS-TCN:
 
 ```bash
+cd modeling
 python train_transfer.py --model sleepconvnet --ablation True
 ```
 
