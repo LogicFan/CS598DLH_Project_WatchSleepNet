@@ -212,15 +212,15 @@ python evaluate_model.py \
 
 #### **Ablation**
 
-This ablation replaces TCN in SleepConvNet with Depthwise Separable Convolutions (DS-TCN) which reduces params & FLOPs.
+This ablation replaces TCN in WatchSleepNet with Depthwise Separable Convolutions (DS-TCN) which reduces params & FLOPs.
 
 Hypothesis: DS-TCN retains temporal receptive field with fewer parameters, improving generalization on small DREAMT and inference speed on smartwatches.
 
-Command to modify the dilation block of SleepConvNet into DS-TCN:
+Command to modify the dilation block of WatchSleepNet into DS-TCN:
 
 ```bash
 cd modeling
-python train_transfer.py --model sleepconvnet --ablation
+python train_transfer.py --model watchsleepnet --ablation
 ```
 
 <!--

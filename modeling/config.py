@@ -154,6 +154,7 @@ class WatchSleepNetConfig:
     USE_TCN = True
     USE_ATTENTION = True
     USE_LSTM = True
+    USE_DS_TCN = False # True for DS-TCN Ablation of WatchSleepNet
 
     @classmethod
     def to_dict(cls):
@@ -169,6 +170,7 @@ class WatchSleepNetConfig:
             "use_tcn": cls.USE_TCN,
             "use_attention": cls.USE_ATTENTION,
             "num_classes": cls.NUM_CLASSES,
+            "use_ds_tcn":cls.USE_DS_TCN, # DS-TCN Ablation of WatchSleepNet
             # --- Training hyperparams ---
             "BATCH_SIZE": cls.BATCH_SIZE,
             "LEARNING_RATE": cls.LEARNING_RATE,

@@ -53,7 +53,7 @@ if __name__ == '__main__':
     parser.add_argument(
     "--ablation",
     action="store_true",
-    help="Enable ablation mode: sets USE_DS_TCN=True for SleepConvNet"
+    help="Enable ablation mode: sets USE_DS_TCN=True for WatchSleepNet"
     )
     args = parser.parse_args()
 
@@ -64,12 +64,12 @@ if __name__ == '__main__':
 
     if args.model == "watchsleepnet":
         model_config_class = WatchSleepNetConfig
+        if args.ablation == "True":
+            model_config_class.USE_DS_TCN = True
     elif args.model == "insightsleepnet":
         model_config_class = InsightSleepNetConfig
     elif args.model == "sleepconvnet":
         model_config_class = SleepConvNetConfig
-        if args.ablation == "True":
-            model_config_class.USE_DS_TCN = True
     elif args.model == "sleepppgnet":
         model_config_class = SleepPPGNetConfig
     else:

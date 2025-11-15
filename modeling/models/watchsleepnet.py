@@ -97,8 +97,27 @@ class DeepTCNBlock(nn.Module):
         dilation = 1
 
         for _ in range(num_layers):
-            self.layers.append(
-                nn.Sequential(
+            if self.use_ds_tcn:
+                # Depthwise + Pointwise Conv
+                depthwise = nn.Conv1d(
+                    current_channels,
+                    current_channels,
+                    kernel_size,
+                    padding=(kernel_size - 1) * dilation // 2,
+                    dilation=dilation,
+                    groups=current_channels
+                )
+                pointwise = nn.Conv1d(current_channels, out_channels, kernel_size=1)
+                conv_block = nn.Sequential(
+                    depthwise,
+                    pointwise,
+                    nn.BatchNorm1d(out_channels),
+                    nn.ReLU(),
+                    nn.Dropout(0.2),
+                )
+            else:
+                # Standard full convolution
+                conv_block = nn.Sequential(
                     nn.Conv1d(
                         current_channels,
                         out_channels,
@@ -110,7 +129,8 @@ class DeepTCNBlock(nn.Module):
                     nn.ReLU(),
                     nn.Dropout(0.2),
                 )
-            )
+
+            self.layers.append(conv_block)
             current_channels = out_channels
             dilation *= 2
 
@@ -235,9 +255,11 @@ class WatchSleepNet(nn.Module):
         tcn_layers,
         use_tcn=True,
         use_attention=True,
+        use_ds_tcn=False,  # Ablation:  Depthwise Separable TCN (DS-TCN)
     ):
         super(WatchSleepNet, self).__init__()
         self.use_tcn = use_tcn
+        self.use_ds_tcn = use_ds_tcn
 
         self.feature_extractor = DeepFeatureExtractor(initial_channels=num_features)
         feature_dim = 256  # Assuming the feature extractor outputs 256 features
