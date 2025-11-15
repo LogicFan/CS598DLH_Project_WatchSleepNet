@@ -220,7 +220,7 @@ Command to modify the dilation block of SleepConvNet into DS-TCN:
 
 ```bash
 cd modeling
-python train_transfer.py --model sleepconvnet --ablation True
+python train_transfer.py --model sleepconvnet --ablation
 ```
 
 <!--
